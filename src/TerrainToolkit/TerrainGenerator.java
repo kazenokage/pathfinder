@@ -4,6 +4,8 @@ import java.util.Random;
 
 /**
  *
+ * Terrain generator is used to create terran for the search algorithm.
+ * 
  * @author tomminikkanen
  */
 public class TerrainGenerator {
