@@ -28,4 +28,21 @@ public class MinHeap {
     private int parent(int position) {
         return position/2;
     }
+    
+    public void insert(int data) {
+        size++;
+        heap[size] = data;
+        
+        int me = size;
+        while (heap[me] < heap[parent(me)] ) {
+            swap(me, parent(me));
+            me = parent(me);
+        }
+    }
+    
+    private void swap(int p1, int p2) {
+        int temp = heap[p1];
+        heap[p1] = heap[p2];
+        heap[p2] = temp;
+    }
 }
