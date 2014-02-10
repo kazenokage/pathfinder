@@ -37,22 +37,35 @@ public class AStar {
         }
     }
     
+    /**
+     * Initializes terrain into nodes
+     * @param terrain 
+     */
     private void initTerrain(int[][] terrain) {
         starInitializer.initTerrainIntoNodes(terrain);
         nodes = starInitializer.getNodes();
     }
     
+    /**
+     * Initializes heap to be used with pathfinder
+     * @param size 
+     */
     private void initHeap(int size) {
         heap = new MinHeap(size);
         heap.insert(nodes[0][0]);
     }
     
+    /**
+     * Helper method to find shortest path
+     * @return shortest path
+     */
     public float shortestPath() {
         return nodes[nodes.length-1][nodes[0].length-1].getCost();
     }
     
     /**
-     *
+     * Finds the "best" available route inside terrain
+     * 
      * @return
      */
     public void findRoute(int[][] terrain) {
