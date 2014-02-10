@@ -7,7 +7,7 @@ package Structures;
  * 
  * @author tomminikkanen
  */
-public class StarNode {
+public class StarNode implements Comparable<StarNode> {
     private int type;
     private int x;
     private int y;
@@ -79,5 +79,24 @@ public class StarNode {
     public float getCost() {
         return cost;
     }
+    
+    /**
+     * Overrided compareTo -function to decide the best cost between nodes
+     * 
+     * @param node to compare to
+     */
+    
+    @Override
+    public int compareTo(StarNode o) {
+        if (this.cost > o.cost) {
+            return 1;
+        } else if (this.cost == o.cost) {
+            return 0;
+        } else {
+            return -1;
+        }
+    }
+    
+    
     
 }
