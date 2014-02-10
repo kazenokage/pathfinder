@@ -1,6 +1,8 @@
 
 package Structures;
 
+import Tools.AStarInit;
+
 /**
  *
  * A* for finding a route in the generated terrain
@@ -9,20 +11,17 @@ package Structures;
  */
 public class AStar {
     
-    StarNode startNode;
-    StarNode goalNode;
-    
-    StarNode[] closedNodes;
-    StarNode[] openNodes;
+    private AStarInit starInitializer;
+    private StarNode[][] nodes;
+    private MinHeap heap;
     
     /**
      *
      * @param start
      * @param goal
      */
-    public AStar(StarNode start, StarNode goal) {
-        this.startNode = start;
-        this.goalNode = goal;
+    public AStar() {
+        this.starInitializer = new AStarInit();
     }
     
     /**
@@ -30,8 +29,12 @@ public class AStar {
      * A* relaxation
      * 
      */
-    private void relax() {
-        
+    private void relax(StarNode n1, StarNode n2) {
+        if (n2.getCost() > n1.getCost()+1) {
+            n2.setCostToThisPoint(n1.getCost()+1);
+            n2.setCost();
+            heap.insert(n2);
+        }
     }
     
     /**
