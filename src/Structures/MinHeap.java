@@ -66,4 +66,25 @@ public class MinHeap {
             }
         }
     }
+    
+    public StarNode removeSmallest() {
+        if (size>=1) {
+            StarNode smallest = heap[0];
+            heap[0] = heap[size-1];
+            size--;
+            if (size > 0) {
+                heapify(0);
+            }
+            return smallest;
+        } else {
+            return null;
+        }
+    }
+    
+    public boolean isEmpty() {
+        if (size > 0) {
+            return false;
+        }
+        return true;
+    }
 }
