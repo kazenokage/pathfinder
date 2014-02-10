@@ -37,12 +37,33 @@ public class AStar {
         }
     }
     
+    private void initTerrain(int[][] terrain) {
+        starInitializer.initTerrainIntoNodes(terrain);
+        nodes = starInitializer.getNodes();
+    }
+    
+    private void initHeap(int size) {
+        heap = new MinHeap(size);
+        heap.insert(nodes[0][0]);
+    }
+    
+    public float shortestPath() {
+        return nodes[nodes.length-1][nodes[0].length-1].getCost();
+    }
+    
     /**
      *
      * @return
      */
-    public MinHeap findRoute() {
-        return null;
+    public void findRoute(int[][] terrain) {
+        initTerrain(terrain);
+        initHeap(terrain.length*terrain[0].length);
+        nodes[0][0].setCost();
+        
+        while (!heap.isEmpty()) {
+            StarNode current = heap.removeSmallest();
+            // need to rebuild this
+        }
     }
     
     

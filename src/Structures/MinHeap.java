@@ -5,9 +5,9 @@ public class MinHeap {
     private StarNode[] heap;
     private int size;
 
-    public MinHeap() {
+    public MinHeap(int size) {
         this.heap = new StarNode[size + 1];
-        size = 0;
+        this.size = 0;
     }
 
     private int left(int position) {
