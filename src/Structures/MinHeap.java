@@ -50,5 +50,20 @@ public class MinHeap {
         int smaller;
         int left = 2 * i + 1;
         int right = 2 * i + 2;
+        
+        if (left >= size && right >= size) {
+            return;
+        } else {
+            if (heap[left].getCost() < heap[right].getCost()) {
+                smaller = left;
+            } else {
+                smaller = right;
+            }
+            
+            if (smaller != i) {
+                swap(i,smaller);
+                heapify(smaller);
+            }
+        }
     }
 }
