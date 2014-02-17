@@ -75,8 +75,18 @@ public class AStar {
         
         while (!heap.isEmpty()) {
             StarNode current = heap.removeSmallest();
+            if((current.getX() - 1 >= 0) && nodes[current.getX() - 1][current.getX()].getType() == 1) {
+                relax(current, nodes[current.getY()-1][current.getY()]);
+            }    
             if((current.getY() - 1 >= 0) && nodes[current.getY() - 1][current.getX()].getType() == 1) {
-                
+                relax(current, nodes[current.getY()-1][current.getX()]);
+            }
+            
+            if(current.getX() + 1 <= nodes.length -1 && nodes[current.getY()][current.getX()+1].getType() == 1) {
+                relax(current, nodes[current.getY()][current.getX() + 1]);
+            }
+            if(current.getY() + 1 <= nodes.length -1 && nodes[current.getX()][current.getY()+1].getType() == 1) {
+                relax(current, nodes[current.getX()][current.getX() + 1]);
             }
         }
     }
