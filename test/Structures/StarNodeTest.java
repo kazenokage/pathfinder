@@ -37,4 +37,5 @@ public class StarNodeTest {
         n.setCost();
         assertEquals(13,n.getCost(),0.1);
     }
+    
 }

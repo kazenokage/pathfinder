@@ -12,9 +12,9 @@ public class StarNode implements Comparable<StarNode> {
     private int x;
     private int y;
     
-    private float cost;
-    private float costToThisPoint;
-    private float guessedCostToGoal;
+    private double cost;
+    private double costToThisPoint;
+    private double guessedCostToGoal;
     
     /**
      *
@@ -48,10 +48,18 @@ public class StarNode implements Comparable<StarNode> {
     }
     
     /**
+     * 
+     * @return type of node
+     */
+    public int getType() {
+        return type;
+    }
+    
+    /**
      *
      * @param c the cost to be set
      */
-    public void setCostToThisPoint(float c) {
+    public void setCostToThisPoint(double c) {
         this.costToThisPoint = c;
     }
     
@@ -59,7 +67,7 @@ public class StarNode implements Comparable<StarNode> {
      *
      * @param g guess to be set
      */
-    public void setGuessedCostToGoal(float g) {
+    public void setGuessedCostToGoal(double g) {
         this.guessedCostToGoal = g;
     }
     
@@ -76,7 +84,7 @@ public class StarNode implements Comparable<StarNode> {
      *
      * @return total cost
      */
-    public float getCost() {
+    public double getCost() {
         return cost;
     }
     
@@ -95,6 +103,11 @@ public class StarNode implements Comparable<StarNode> {
         } else {
             return -1;
         }
+    }
+    
+    @Override
+    public String toString() {
+        return x+","+y;
     }
     
     

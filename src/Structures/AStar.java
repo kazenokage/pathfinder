@@ -59,7 +59,7 @@ public class AStar {
      * Helper method to find shortest path
      * @return shortest path
      */
-    public float shortestPath() {
+    public double shortestPath() {
         return nodes[nodes.length-1][nodes[0].length-1].getCost();
     }
     
@@ -75,7 +75,9 @@ public class AStar {
         
         while (!heap.isEmpty()) {
             StarNode current = heap.removeSmallest();
-            // need to rebuild this
+            if((current.getY() - 1 >= 0) && nodes[current.getY() - 1][current.getX()].getType() == 1) {
+                
+            }
         }
     }
     
