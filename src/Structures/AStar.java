@@ -75,6 +75,7 @@ public class AStar {
         
         while (!heap.isEmpty()) {
             StarNode current = heap.removeSmallest();
+            
             if((current.getX() - 1 >= 0) && nodes[current.getX() - 1][current.getX()].getType() == 1) {
                 relax(current, nodes[current.getY()-1][current.getY()]);
             }    
