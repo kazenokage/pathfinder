@@ -107,7 +107,7 @@ public class StarNode implements Comparable<StarNode> {
     
     @Override
     public String toString() {
-        return x+","+y;
+        return "["+x+","+y+"]<"+cost+"/"+costToThisPoint+"/"+guessedCostToGoal+">";
     }
     
     

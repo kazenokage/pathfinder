@@ -19,8 +19,7 @@ public class Pathfinder {
     public static void main(String[] args) {
         TerrainGenerator terrain = new TerrainGenerator(15,15,15);
         terrain.generateTerrain();
-        AStar solver = new AStar();
+        AStar solver = new AStar(1);
         solver.findRoute(terrain.getTerrain());
-        System.out.println(solver.shortestPath());
     }
 }
