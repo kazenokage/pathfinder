@@ -2,13 +2,13 @@ package Structures;
 
 /**
  *
- * Minimum heap used with A* 
- * 
+ * Minimum heap used with A*
+ *
  * @author tomminikkanen
  */
 public class MinHeap {
-    
-    private StarNode[] heap; 
+
+    private StarNode[] heap;
     private int size;
 
     /**
@@ -19,8 +19,10 @@ public class MinHeap {
         this.heap = new StarNode[size + 1];
         this.size = 0;
     }
+
     /**
      * Returns the left child for the given position
+     *
      * @param position
      * @return int position
      */
@@ -30,6 +32,7 @@ public class MinHeap {
 
     /**
      * Returns the right child for the given position
+     *
      * @param position
      * @return int position
      */
@@ -39,7 +42,7 @@ public class MinHeap {
 
     /**
      * Checks if the given node is a leaf
-     * 
+     *
      * @param position
      * @return is leaf?
      */
@@ -52,8 +55,9 @@ public class MinHeap {
     }
 
     /**
-     * 
+     *
      * Method for inserting a node into the heap
+     *
      * @param node
      */
     public void insert(StarNode node) {
@@ -61,7 +65,7 @@ public class MinHeap {
             int i = size;
             heap[i] = node;
 
-            while (i > 1 && heap[parent(i)].getCost() > node.getCost()) {
+            while (i > 1 && heap[parent(i)].getTotalCost() > node.getTotalCost()) {
                 swap(i, parent(i));
                 i = parent(i);
             }
@@ -69,53 +73,54 @@ public class MinHeap {
             size++;
         }
     }
+
     /**
      * Swaps the given nodes
+     *
      * @param p1
-     * @param p2 
+     * @param p2
      */
     private void swap(int p1, int p2) {
         StarNode temp = heap[p1];
         heap[p1] = heap[p2];
         heap[p2] = temp;
     }
-    
+
     /**
      * Used to balance the heap
-     * 
-     * @param i 
+     *
+     * @param i
      */
-    
     private void heapify(int i) {
         int smaller;
         int left = 2 * i + 1;
         int right = 2 * i + 2;
-        
+
         if (left >= size && right >= size) {
             return;
         } else {
-            if (heap[left].getCost() < heap[right].getCost()) {
+            if (heap[left].getTotalCost() < heap[right].getTotalCost()) {
                 smaller = left;
             } else {
                 smaller = right;
             }
-            
+
             if (smaller != i) {
-                swap(i,smaller);
+                swap(i, smaller);
                 heapify(smaller);
             }
         }
     }
-    
+
     /**
      * Removes and returns the smallest node in the heap
-     * 
+     *
      * @return
      */
     public StarNode removeSmallest() {
-        if (size>=1) {
+        if (size >= 1) {
             StarNode smallest = heap[0];
-            heap[0] = heap[size-1];
+            heap[0] = heap[size - 1];
             size--;
             if (size > 0) {
                 heapify(0);
@@ -125,9 +130,10 @@ public class MinHeap {
             return null;
         }
     }
-    
+
     /**
      * Checks if the heap is empty
+     *
      * @return
      */
     public boolean isEmpty() {
@@ -136,12 +142,25 @@ public class MinHeap {
         }
         return true;
     }
-    
+
     /**
      * Returns the current heap as a array
+     *
      * @return
      */
     public StarNode[] currentNodes() {
         return heap;
+    }
+
+    @Override
+    public String toString() {
+        String returnable = "";
+        if (heap.length > 0) {
+            for (StarNode sn : heap) {
+                returnable += sn;
+                returnable += "-";
+            }
+        }
+        return returnable;
     }
 }

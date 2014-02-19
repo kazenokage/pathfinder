@@ -6,6 +6,7 @@ package pathfinder;
 
 import Structures.AStar;
 import TerrainToolkit.TerrainGenerator;
+import TerrainToolkit.TerrainPrinter;
 
 /**
  *
@@ -18,8 +19,9 @@ public class Pathfinder {
      */
     public static void main(String[] args) {
         TerrainGenerator terrain = new TerrainGenerator(15,15,15);
+        TerrainPrinter tp = new TerrainPrinter();
         terrain.generateTerrain();
-        AStar solver = new AStar(1);
+        AStar solver = new AStar(0);
         solver.findRoute(terrain.getTerrain());
     }
 }

@@ -8,11 +8,15 @@ package Structures;
  * @author tomminikkanen
  */
 public class StarNode implements Comparable<StarNode> {
+    /**
+     * The type and coordinates of the node
+     */
     private int type;
     private int x;
     private int y;
     
-    private double cost;
+    
+    private double totalCost;
     private double costToThisPoint;
     private double guessedCostToGoal;
     
@@ -26,7 +30,7 @@ public class StarNode implements Comparable<StarNode> {
         this.type = type;
         this.x = x;
         this.y = y;
-        this.cost = 0;
+        this.totalCost = 0;
         this.costToThisPoint = 0;
         this.guessedCostToGoal = 0;
     }
@@ -56,6 +60,14 @@ public class StarNode implements Comparable<StarNode> {
     }
     
     /**
+     * 
+     * @return 
+     */
+    public double getCostToThisPoint() {
+        return this.costToThisPoint;
+    }
+    
+    /**
      *
      * @param c the cost to be set
      */
@@ -76,16 +88,16 @@ public class StarNode implements Comparable<StarNode> {
      * Will set the total cost based on the current cost and the guess.
      * 
      */
-    public void setCost() {
-        cost = costToThisPoint + guessedCostToGoal;
+    public void setTotalCost() {
+        totalCost = costToThisPoint + guessedCostToGoal;
     }
     
     /**
      *
      * @return total cost
      */
-    public double getCost() {
-        return cost;
+    public double getTotalCost() {
+        return totalCost;
     }
     
     /**
@@ -96,9 +108,9 @@ public class StarNode implements Comparable<StarNode> {
     
     @Override
     public int compareTo(StarNode o) {
-        if (this.cost > o.cost) {
+        if (this.totalCost > o.totalCost) {
             return 1;
-        } else if (this.cost == o.cost) {
+        } else if (this.totalCost == o.totalCost) {
             return 0;
         } else {
             return -1;
@@ -107,7 +119,7 @@ public class StarNode implements Comparable<StarNode> {
     
     @Override
     public String toString() {
-        return "["+x+","+y+"]<"+cost+"/"+costToThisPoint+"/"+guessedCostToGoal+">";
+        return "["+x+","+y+"|"+type+"]";//<"+cost+"/"+costToThisPoint+"/"+guessedCostToGoal+">";
     }
     
     
