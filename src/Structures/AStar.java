@@ -84,6 +84,7 @@ public class AStar {
         nodes[0][0].setTotalCost();
 
         while (!heap.isEmpty()) {
+            System.out.println("Current heap: "+heap.toString());
             StarNode current = heap.removeSmallest();
             if (current.getType() == 1) {
                 System.out.println(current);

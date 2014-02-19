@@ -34,8 +34,8 @@ public class StarNodeTest {
     public void testGetCost() {
         n.setCostToThisPoint(5);
         n.setGuessedCostToGoal(8);
-        n.setCost();
-        assertEquals(13,n.getCost(),0.1);
+        n.setTotalCost();
+        assertEquals(13,n.getTotalCost(),0.1);
     }
     
 }

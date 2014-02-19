@@ -154,11 +154,12 @@ public class MinHeap {
 
     @Override
     public String toString() {
-        String returnable = "";
+        String returnable = "[Size:"+size+"]";
         if (heap.length > 0) {
             for (StarNode sn : heap) {
-                returnable += sn;
-                returnable += "-";
+                if(sn != null) {
+                    returnable += sn;
+                }
             }
         }
         return returnable;

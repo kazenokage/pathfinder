@@ -55,9 +55,9 @@ public class TerrainGenerator {
      */
     public int randomizeTile() {
         if (random.nextInt(100) < density) {
-            return 1;
+            return 0;
         }
-        return 0;
+        return 1;
     }
 
     /**

@@ -19,8 +19,9 @@ public class Pathfinder {
      */
     public static void main(String[] args) {
         TerrainGenerator terrain = new TerrainGenerator(15,15,15);
-        TerrainPrinter tp = new TerrainPrinter();
+        TerrainPrinter tp = new TerrainPrinter('x','.');
         terrain.generateTerrain();
+        tp.printTerrain(terrain.getTerrain());
         AStar solver = new AStar(0);
         solver.findRoute(terrain.getTerrain());
     }
