@@ -61,7 +61,9 @@ public class AStar {
     private void initHeap(int size) {
         heap = new MinHeap(size);
         heap.insert(nodes[0][0]);
-        System.out.println("Initialized heap: "+heap.toString());
+        if (mode == 1) {
+            System.out.println("Initialized heap: " + heap.toString());
+        }
     }
 
     /**
@@ -84,7 +86,7 @@ public class AStar {
         nodes[0][0].setTotalCost();
 
         while (!heap.isEmpty()) {
-            System.out.println("Current heap: "+heap.toString());
+            // System.out.println("Current heap: "+heap.toString());
             StarNode current = heap.removeSmallest();
             if (current.getType() == 1) {
                 System.out.println(current);
@@ -114,5 +116,9 @@ public class AStar {
             }
             System.out.println("");
         }
+    }
+    
+    public StarNode[][] getNodes() {
+        return nodes;
     }
 }
