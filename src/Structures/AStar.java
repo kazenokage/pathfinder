@@ -81,6 +81,7 @@ public class AStar {
      * @return
      */
     public void findRoute(int[][] terrain) {
+        MinHeap route = new MinHeap(terrain.length*terrain[0].length);
         initTerrain(terrain);
         initHeap(terrain.length * terrain[0].length);
         nodes[0][0].setTotalCost();
@@ -90,19 +91,19 @@ public class AStar {
             StarNode current = heap.removeSmallest();
             if (current.getType() == 1) {
                 System.out.println(current);
-                if ((current.getY() - 1 >= 0) && nodes[current.getY() - 1][current.getX()].getType() == 1) {
+                if (current.getY() - 1 >= 0 && nodes[current.getY() - 1][current.getX()].getType() == 1) {
                     relax(current, nodes[current.getY() - 1][current.getX()]);
                 }
 
-                if (current.getY() + 1 <= nodes.length - 1 && nodes[current.getX()][current.getY() + 1].getType() == 1) {
-                    relax(current, nodes[current.getX()][current.getX() + 1]);
+                if (current.getY() + 1 <= nodes.length - 1 && nodes[current.getY()+1][current.getX()].getType() == 1) {
+                    relax(current, nodes[current.getY()+1][current.getX()]);
                 }
 
-                if ((current.getX() - 1 >= 0) && nodes[current.getX() - 1][current.getX()].getType() == 1) {
-                    relax(current, nodes[current.getY() - 1][current.getY()]);
+                if (current.getX() - 1 >= 0 && nodes[current.getY()][current.getX()-1].getType() == 1) {
+                    relax(current, nodes[current.getY()][current.getX()-1]);
                 }
 
-                if (current.getX() + 1 <= nodes.length - 1 && nodes[current.getY()][current.getX() + 1].getType() == 1) {
+                if (current.getX() + 1 <= nodes.length - 1 && nodes[current.getY()][current.getX()+1].getType() == 1) {
                     relax(current, nodes[current.getY()][current.getX() + 1]);
                 }
             }

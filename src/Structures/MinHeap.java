@@ -51,7 +51,7 @@ public class MinHeap {
     }
 
     private int parent(int position) {
-        return position / 2;
+        return (position-1) / 2;
     }
 
     /**
@@ -61,17 +61,19 @@ public class MinHeap {
      * @param node
      */
     public void insert(StarNode node) {
-        if (size < heap.length) {
-            int i = size;
-            heap[i] = node;
-
-            while (i > 1 && heap[parent(i)].getTotalCost() > node.getTotalCost()) {
-                swap(i, parent(i));
-                i = parent(i);
-            }
-
-            size++;
+        if (size == heap.length) {
+            return;
         }
+        
+        int i = size;
+        heap[i] = node;
+
+        while (i > 1 && heap[parent(i)].getTotalCost() > node.getTotalCost()) {
+            swap(i, parent(i));
+            i = parent(i);
+        }
+
+        size++;
     }
 
     /**
@@ -154,10 +156,10 @@ public class MinHeap {
 
     @Override
     public String toString() {
-        String returnable = "[Size:"+size+"]";
+        String returnable = "[Size:" + size + "]";
         if (heap.length > 0) {
             for (StarNode sn : heap) {
-                if(sn != null) {
+                if (sn != null) {
                     returnable += sn;
                 }
             }
