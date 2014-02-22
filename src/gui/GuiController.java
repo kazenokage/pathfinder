@@ -3,7 +3,6 @@ package gui;
 
 import Structures.AStar;
 import Structures.StarNode;
-import java.awt.GridLayout;
 import javax.swing.JFrame;
 
 

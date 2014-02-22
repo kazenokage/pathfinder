@@ -51,7 +51,7 @@ public class MinHeap {
     }
 
     private int parent(int position) {
-        return (position-1) / 2;
+        return (position - 1) / 2;
     }
 
     /**
@@ -64,7 +64,7 @@ public class MinHeap {
         if (size == heap.length) {
             return;
         }
-        
+
         int i = size;
         heap[i] = node;
 
@@ -100,17 +100,17 @@ public class MinHeap {
 
         if (left >= size && right >= size) {
             return;
-        } else {
-            if (heap[left].getTotalCost() < heap[right].getTotalCost()) {
-                smaller = left;
-            } else {
-                smaller = right;
-            }
+        }
 
-            if (smaller != i) {
-                swap(i, smaller);
-                heapify(smaller);
-            }
+        if (heap[left].getTotalCost() < heap[right].getTotalCost()) {
+            smaller = left;
+        } else {
+            smaller = right;
+        }
+
+        if (smaller != i) {
+            swap(i, smaller);
+            heapify(smaller);
         }
     }
 

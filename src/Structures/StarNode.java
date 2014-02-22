@@ -14,11 +14,12 @@ public class StarNode implements Comparable<StarNode> {
     private int type;
     private int x;
     private int y;
-    
-    
+   
     private double totalCost;
     private double costToThisPoint;
     private double guessedCostToGoal;
+    
+    private StarNode previous;
     
     /**
      *
@@ -57,6 +58,18 @@ public class StarNode implements Comparable<StarNode> {
      */
     public int getType() {
         return type;
+    }
+    
+    public void setType(int type) {
+        this.type = type;
+    }
+    
+    public void setPrevious(StarNode previous) {
+        this.previous = previous;
+    }
+    
+    public StarNode getPrevious() {
+        return previous;
     }
     
     /**
@@ -119,7 +132,7 @@ public class StarNode implements Comparable<StarNode> {
     
     @Override
     public String toString() {
-        return "["+x+","+y+"|"+type+"]";//<"+cost+"/"+costToThisPoint+"/"+guessedCostToGoal+">";
+        return "["+x+","+y+"|"+type+"]<"+totalCost+"/"+costToThisPoint+"/"+guessedCostToGoal+">";
     }
     
     

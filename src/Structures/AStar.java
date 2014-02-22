@@ -1,7 +1,7 @@
 package Structures;
 
 import Tools.AStarInit;
-import java.util.PriorityQueue;
+import gui.GuiController;
 
 /**
  *
@@ -14,7 +14,7 @@ public class AStar {
     private AStarInit starInitializer;
     private StarNode[][] nodes;
     private MinHeap heap;
-    private PriorityQueue pq;
+    private MinHeap visited;
     int mode;
 
     /**
@@ -36,7 +36,9 @@ public class AStar {
         if (n2.getCostToThisPoint() > n1.getCostToThisPoint() + 1) {
             n2.setCostToThisPoint(n1.getCostToThisPoint() + 1);
             n2.setTotalCost();
+            n2.setPrevious(n1);
             heap.insert(n2);
+            visited.insert(n2);
         }
     }
 
@@ -60,10 +62,8 @@ public class AStar {
      */
     private void initHeap(int size) {
         heap = new MinHeap(size);
+        visited = new MinHeap(size);
         heap.insert(nodes[0][0]);
-        if (mode == 1) {
-            System.out.println("Initialized heap: " + heap.toString());
-        }
     }
 
     /**
@@ -87,10 +87,8 @@ public class AStar {
         nodes[0][0].setTotalCost();
 
         while (!heap.isEmpty()) {
-            // System.out.println("Current heap: "+heap.toString());
             StarNode current = heap.removeSmallest();
             if (current.getType() == 1) {
-                System.out.println(current);
                 if (current.getY() - 1 >= 0 && nodes[current.getY() - 1][current.getX()].getType() == 1) {
                     relax(current, nodes[current.getY() - 1][current.getX()]);
                 }
@@ -122,4 +120,20 @@ public class AStar {
     public StarNode[][] getNodes() {
         return nodes;
     }
+    
+    public void transformForGui() {
+        StarNode current;
+        while(!visited.isEmpty()) {
+            current = visited.removeSmallest();
+            current.setType(3);
+        }
+        nodes[nodes.length-1][nodes[0].length-1].setType(2);
+        current = nodes[nodes.length-1][nodes[0].length-1];
+        while(current.getPrevious() != null) {
+            current.setType(2);
+            current = current.getPrevious();
+        }
+        nodes[0][0].setType(2);
+    }
+    
 }
