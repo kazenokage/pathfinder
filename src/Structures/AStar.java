@@ -9,7 +9,7 @@ import gui.GuiController;
  *
  * @author tomminikkanen
  */
-public class AStar {
+public class AStar implements Algorithm {
 
     private AStarInit starInitializer;
     private StarNode[][] nodes;
@@ -117,7 +117,7 @@ public class AStar {
         }
     }
     
-    public StarNode[][] getNodes() {
+    public Node[][] getNodes() {
         return nodes;
     }
     

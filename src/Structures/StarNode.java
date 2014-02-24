@@ -7,7 +7,7 @@ package Structures;
  * 
  * @author tomminikkanen
  */
-public class StarNode implements Comparable<StarNode> {
+public class StarNode implements Comparable<StarNode>, Node {
     /**
      * The type and coordinates of the node
      */
