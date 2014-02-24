@@ -153,17 +153,4 @@ public class MinHeap {
     public StarNode[] currentNodes() {
         return heap;
     }
-
-    @Override
-    public String toString() {
-        String returnable = "[Size:" + size + "]";
-        if (heap.length > 0) {
-            for (StarNode sn : heap) {
-                if (sn != null) {
-                    returnable += sn;
-                }
-            }
-        }
-        return returnable;
-    }
 }
