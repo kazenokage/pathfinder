@@ -1,7 +1,6 @@
 package Structures;
 
 import Tools.AStarInit;
-import gui.GuiController;
 
 /**
  *
