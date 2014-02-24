@@ -24,7 +24,7 @@ public class Pathfinder {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        TerrainGenerator terrain = new TerrainGenerator(100, 100, 10);
+        TerrainGenerator terrain = new TerrainGenerator(1000, 1000, 10);
         terrain.generateTerrain();
         
         double time1;

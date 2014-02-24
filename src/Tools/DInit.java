@@ -15,7 +15,8 @@ public class DInit {
     }
 
     /**
-     *
+     * Initialize the nodes from given terrain
+     * 
      * @param terrain
      * @return
      */
