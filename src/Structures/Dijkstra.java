@@ -103,6 +103,7 @@ public class Dijkstra implements Algorithm {
         }
     }
     
+    @Override
     public Node[][] getNodes() {
         return nodes;
     }

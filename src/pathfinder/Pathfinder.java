@@ -6,6 +6,7 @@ package pathfinder;
 
 import Structures.AStar;
 import Structures.BMF;
+import Structures.Dijkstra;
 import TerrainToolkit.TerrainGenerator;
 import gui.GuiController;
 
@@ -26,11 +27,17 @@ public class Pathfinder {
         solver.findRoute(terrain.getTerrain());
         solver.transformForGui();
         System.out.println("[A*] Shortest path length: "+solver.shortestPath());
-        GuiController gui = new GuiController(solver,"A*");
-        gui.showGUI();
         
         BMF solver2 = new BMF();
         solver2.findRoute(terrain.getTerrain());
         System.out.println("[BMF] Shortest path length: "+solver2.getShortestPath());
+        
+        Dijkstra solver3 = new Dijkstra();
+        solver3.findRoute(terrain.getTerrain());
+        System.out.println("[Dijkstra] Shortest path length: "+solver2.getShortestPath());
+        
+        GuiController gui = new GuiController(solver,"A*");
+        gui.showGUI();
+
     }
 }
