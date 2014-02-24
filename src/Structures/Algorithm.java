@@ -5,9 +5,13 @@
 package Structures;
 
 /**
- *
+ * Interface for algorithm
  * @author tomminikkanen
  */
 public interface Algorithm {
+    /**
+     * Get all the nodes
+     * @return
+     */
     public Node[][] getNodes();
 }

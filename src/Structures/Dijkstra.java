@@ -4,20 +4,25 @@ package Structures;
 import Tools.DInit;
 
 
+/**
+ *
+ * @author tomminikkanen
+ */
 public class Dijkstra implements Algorithm {
     
     private DInit DInitializer;
     private DNode[][] nodes;
     private MinHeapD heap;
     private MinHeapD visited;
+    private int record;
 
     /**
      *
-     * @param start
-     * @param goal
+     * @param record 
      */
-    public Dijkstra() {
+    public Dijkstra(int record) {
        DInitializer = new DInit();
+       this.record = record;
     }
 
     /**
@@ -30,7 +35,9 @@ public class Dijkstra implements Algorithm {
             n2.setCostToThisPoint(n1.getCostToThisPoint() + 1);
             n2.setPrevious(n1);
             heap.insert(n2);
-            visited.insert(n2);
+            if (record == 1) {
+                visited.insert(n2);
+            }
         }
     }
 
@@ -66,7 +73,7 @@ public class Dijkstra implements Algorithm {
     /**
      * Finds the "best" available route inside terrain
      *
-     * @return
+     * @param terrain 
      */
     public void findRoute(int[][] terrain) {
         initTerrain(terrain);
@@ -93,21 +100,19 @@ public class Dijkstra implements Algorithm {
             }
         }
     }
-
-    public void printCurrentNodes() {
-        for (int i = 0; i < nodes.length; i++) {
-            for (int j = 0; j < nodes[0].length; j++) {
-                System.out.print(nodes[i][j] + " ");
-            }
-            System.out.println("");
-        }
-    }
     
+    /**
+     *
+     * @return
+     */
     @Override
     public Node[][] getNodes() {
         return nodes;
     }
     
+    /**
+     *
+     */
     public void transformForGui() {
         DNode current;
         while(!visited.isEmpty()) {

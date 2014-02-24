@@ -2,11 +2,23 @@ package Tools;
 
 import Structures.DNode;
 
+/**
+ *
+ * @author tomminikkanen
+ */
 public class DInit {
 
+    /**
+     *
+     */
     public DInit() {
     }
 
+    /**
+     *
+     * @param terrain
+     * @return
+     */
     public DNode[][] init(int[][] terrain) {
         DNode[][] nodes = new DNode[terrain.length][terrain[0].length];
 

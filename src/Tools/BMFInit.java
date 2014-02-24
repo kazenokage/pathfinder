@@ -2,14 +2,26 @@ package Tools;
 
 import Structures.BMFNode;
 
+/**
+ *
+ * @author tomminikkanen
+ */
 public class BMFInit {
     
     private BMFNode[][] nodes;
     
+    /**
+     *
+     */
     public BMFInit() {
         
     }
     
+    /**
+     *
+     * @param terrain
+     * @return
+     */
     public BMFNode[][] initialize(int[][] terrain) {
         nodes = new BMFNode[terrain.length][terrain[0].length];
         

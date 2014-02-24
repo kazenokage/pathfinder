@@ -60,14 +60,26 @@ public class StarNode implements Comparable<StarNode>, Node {
         return type;
     }
     
+    /**
+     *
+     * @param type
+     */
     public void setType(int type) {
         this.type = type;
     }
     
+    /**
+     *
+     * @param previous
+     */
     public void setPrevious(StarNode previous) {
         this.previous = previous;
     }
     
+    /**
+     *
+     * @return
+     */
     public StarNode getPrevious() {
         return previous;
     }
@@ -116,7 +128,6 @@ public class StarNode implements Comparable<StarNode>, Node {
     /**
      * Overrided compareTo -function to decide the best cost between nodes
      * 
-     * @param node to compare to
      */
     
     @Override

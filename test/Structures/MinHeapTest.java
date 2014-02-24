@@ -37,7 +37,7 @@ public class MinHeapTest {
     @Test
     public void singleInsertionWorks() {
         testHeap.insert(nodeA);
-        assertEquals("0,0", testHeap.removeSmallest().toString());
+        assertEquals("[0,0|1]<0.0/0.0/0.0>", testHeap.removeSmallest().toString());
     }
     
     @Test
@@ -45,9 +45,9 @@ public class MinHeapTest {
         testHeap.insert(nodeA);
         testHeap.insert(nodeB);
         testHeap.insert(nodeC);
-        assertEquals("0,0", testHeap.removeSmallest().toString());
-        assertEquals("3,6", testHeap.removeSmallest().toString());
-        assertEquals("4,7", testHeap.removeSmallest().toString());
+        assertEquals("[0,0|1]<0.0/0.0/0.0>", testHeap.removeSmallest().toString());
+        assertEquals("[3,6|2]<0.0/0.0/0.0>", testHeap.removeSmallest().toString());
+        assertEquals("[4,7|1]<0.0/0.0/0.0>", testHeap.removeSmallest().toString());
     }
     
     @Test 
@@ -59,7 +59,7 @@ public class MinHeapTest {
         nodeA.setCostToThisPoint(5);
         nodeA.setGuessedCostToGoal(8);
         testHeap.insert(nodeA);
-        assertEquals("3,6", testHeap.removeSmallest().toString());
+        assertEquals("[3,6|2]<0.0/0.0/0.0>", testHeap.removeSmallest().toString());
     }
     
     @Test

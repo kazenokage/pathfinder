@@ -9,26 +9,40 @@ import Tools.AStarInit;
  * @author tomminikkanen
  */
 public class AStar implements Algorithm {
-
+    
+    /**
+     * Initializer to be used with AStar
+     */ 
     private AStarInit starInitializer;
+    /**
+     * Array of nodes
+     */
     private StarNode[][] nodes;
+    /**
+     * Heap used for pathfinding
+     */
     private MinHeap heap;
+    /**
+     * Heap used for recording visited nodes
+     */
     private MinHeap visited;
-    int mode;
+    /**
+     * Will the visited nodes be recorded? 0=no, 1=yes
+     */
+    private int record;
 
     /**
-     *
-     * @param start
-     * @param goal
+     * Constructs the algorithm
+     * @param record visited nodes recorded?
      */
-    public AStar(int mode) {
+    public AStar(int record) {
         this.starInitializer = new AStarInit();
-        this.mode = mode;
+        this.record = record;
     }
 
     /**
      *
-     * A* relaxation
+     * A* relaxation method
      *
      */
     private void relax(StarNode n1, StarNode n2) {
@@ -37,7 +51,9 @@ public class AStar implements Algorithm {
             n2.setTotalCost();
             n2.setPrevious(n1);
             heap.insert(n2);
-            visited.insert(n2);
+            if (record == 1) {
+                visited.insert(n2);
+            }
         }
     }
 
@@ -49,9 +65,6 @@ public class AStar implements Algorithm {
     private void initTerrain(int[][] terrain) {
         starInitializer.initTerrainIntoNodes(terrain);
         nodes = starInitializer.getNodes();
-        if (mode == 1) {
-            printCurrentNodes();
-        }
     }
 
     /**
@@ -77,7 +90,7 @@ public class AStar implements Algorithm {
     /**
      * Finds the "best" available route inside terrain
      *
-     * @return
+     * @param terrain 
      */
     public void findRoute(int[][] terrain) {
         MinHeap route = new MinHeap(terrain.length*terrain[0].length);
@@ -106,20 +119,18 @@ public class AStar implements Algorithm {
             }
         }
     }
-
-    public void printCurrentNodes() {
-        for (int i = 0; i < nodes.length; i++) {
-            for (int j = 0; j < nodes[0].length; j++) {
-                System.out.print(nodes[i][j] + " ");
-            }
-            System.out.println("");
-        }
-    }
     
+    /**
+     * Returns all the nodes
+     * @return
+     */
     public Node[][] getNodes() {
         return nodes;
     }
     
+    /**
+     * Transforms the nodes for visualization
+     */
     public void transformForGui() {
         StarNode current;
         while(!visited.isEmpty()) {

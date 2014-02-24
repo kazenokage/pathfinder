@@ -17,7 +17,8 @@ public class TerrainGenerator {
     private Random random;
 
     /**
-     *
+     * Constructs a new terrain generator
+     * 
      * @param width of the terrain
      * @param height of the terrain
      * @param density

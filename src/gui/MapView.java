@@ -7,16 +7,28 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
+/**
+ *
+ * @author tomminikkanen
+ */
 public class MapView extends JPanel {
 
     Algorithm pathfinder;
     Node[][] nodes;
 
+    /**
+     * Constructor
+     * @param pf
+     */
     public MapView(Algorithm pf) {
         pathfinder = pf;
         nodes = pf.getNodes();
     }
-
+    
+    /**
+     * Draws the elements of the given terrain (from algorithm)
+     * @param g 
+     */
     public void paintComponent(Graphics g) {
         for (int i = 0; i < nodes.length; i++) {
             for (int j = 0; j < nodes[0].length; j++) {

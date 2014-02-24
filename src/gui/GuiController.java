@@ -6,10 +6,20 @@ import Structures.Node;
 import javax.swing.JFrame;
 
 
+/**
+ *
+ * @author tomminikkanen
+ */
 public class GuiController extends JFrame {
     
     MapView mv;
     
+    /**
+     * Constructs a new GuiController
+     * 
+     * @param pf
+     * @param title
+     */
     public GuiController(Algorithm pf, String title) {
         mv = new MapView(pf);
         Node[][] nodes = pf.getNodes();
@@ -20,6 +30,9 @@ public class GuiController extends JFrame {
         add(mv);
     }
     
+    /**
+     * Shows the GUI
+     */
     public void showGUI() {
         setVisible(true);
     } 
